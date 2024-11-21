@@ -1,0 +1,1 @@
+An exclusive clubhouse messaging application built with Express.js, PostgreSQL, and Passport.js, designed specifically for personal practice of authentication.
