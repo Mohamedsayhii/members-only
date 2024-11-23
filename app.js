@@ -16,7 +16,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // SESSION SETUP
-const sessionStore = pgStore({
+const sessionStore = new pgStore({
 	conString: process.env.DB_STRING,
 	tableName: 'sessions',
 });
@@ -35,5 +35,8 @@ require('./config/passport');
 app.use(passport.session());
 
 // ROUTES
+const indexRouter = require('./routes/indexRouter');
+
+app.use('/', indexRouter);
 
 app.listen(3000, () => console.log('express server listening on port 3000'));
