@@ -36,7 +36,9 @@ app.use(passport.session());
 
 // ROUTES
 const indexRouter = require('./routes/indexRouter');
+const homeRouter = require('./routes/homeRouter');
 
 app.use('/', indexRouter);
+app.use('/home', homeRouter);
 
 app.listen(3000, () => console.log('express server listening on port 3000'));
