@@ -1,8 +1,9 @@
 const { Router } = require('express');
-const { getHomepage } = require('../controllers/homeController');
+const { getHomepage, getLogout } = require('../controllers/homeController');
 
 const homeRouter = Router();
 
 homeRouter.get('/', getHomepage);
+homeRouter.get('/logout', getLogout);
 
 module.exports = homeRouter;
