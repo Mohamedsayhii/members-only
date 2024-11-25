@@ -26,7 +26,13 @@ const validateSignup = [
 		.isAlphanumeric()
 		.withMessage(`User name ${alphaNumericErr}`)
 		.isLength({ min: 1, max: 20 })
-		.withMessage(`User name ${userNameErr}`),
+		.withMessage(`User name ${userNameErr}`)
+		.custom(async (username) => {
+			const user = await db.getUser(username);
+			if (user) {
+				throw new Error(`Username already taken.`);
+			}
+		}),
 	body('password')
 		.isLength({ min: 6 })
 		.withMessage(`Password ${passwordErr}`),
@@ -34,7 +40,7 @@ const validateSignup = [
 		.custom((value, { req }) => {
 			return value === req.body.password;
 		})
-		.withMessage(`Password and confirm password doesn't match`),
+		.withMessage(`Password and confirm password doesn't match.`),
 ];
 
 exports.getLoginPage = (req, res) => {
