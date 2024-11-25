@@ -23,3 +23,20 @@ body {
 	background-color: black;
 	color: white;
 }
+
+footer {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 7px;
+	color: white;
+	padding: 1rem;
+
+	img {
+		height: 18px;
+	}
+}
