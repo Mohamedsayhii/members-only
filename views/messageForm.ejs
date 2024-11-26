@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="icon.jpg" type="image/jpg" />
+		<link rel="stylesheet" href="/style.css" />
+		<link rel="stylesheet" href="/login-style.css" />
+		<title><%= title %></title>
+	</head>
+	<body>
+		<%- include('partials/errors') %>
+		<form action="/home/new-message" method="post">
+			<div class="form-group field">
+				<input
+					type="text"
+					name="title"
+					id="title"
+					class="form-field"
+					required=""
+				/>
+				<label for="title" class="form-label">Title</label>
+			</div>
+			<div class="form-group field">
+				<input
+					type="text"
+					name="text"
+					id="text"
+					class="form-field"
+					required=""
+				/>
+				<label for="text" class="form-label">Text</label>
+			</div>
+			<a href="/">
+				<button type="submit" class="button">Create Message</button>
+			</a>
+		</form>
+
+		<%- include('footer') %>
+	</body>
+</html>

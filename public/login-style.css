@@ -83,7 +83,7 @@ form * {
 	box-shadow: none;
 }
 
-.button {
+/* .button {
 	align-items: center;
 	background: #ffffff;
 	border: 0 solid #e2e8f0;
@@ -107,4 +107,4 @@ form * {
 	user-select: none;
 	-webkit-user-select: none;
 	touch-action: manipulation;
-}
+} */
