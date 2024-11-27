@@ -6,6 +6,7 @@
 		<link rel="icon" href="icon.jpg" type="image/jpg" />
 		<link rel="stylesheet" href="/style.css" />
 		<link rel="stylesheet" href="/login-style.css" />
+		<link rel="stylesheet" href="/message-form.css" />
 		<title><%= title %></title>
 	</head>
 	<body>
@@ -22,20 +23,22 @@
 				<label for="title" class="form-label">Title</label>
 			</div>
 			<div class="form-group field">
-				<input
+				<textarea
 					type="text"
 					name="text"
 					id="text"
 					class="form-field"
 					required=""
-				/>
+				></textarea>
 				<label for="text" class="form-label">Text</label>
 			</div>
 			<a href="/">
 				<button type="submit" class="button">Create Message</button>
 			</a>
 		</form>
-
+		<a href="/home">
+			<button type="" class="button">Back</button>
+		</a>
 		<%- include('footer') %>
 	</body>
 </html>

@@ -19,6 +19,14 @@ form * {
 	margin-bottom: 1rem;
 }
 
+form button {
+	margin-bottom: 0;
+}
+
+form a {
+	margin-bottom: 0;
+}
+
 .form-group {
 	position: relative;
 	padding: 20px 0 0;
@@ -61,7 +69,6 @@ form * {
 
 .form-field:focus {
 	padding-bottom: 6px;
-	font-weight: 700;
 	border-width: 3px;
 	border-image: linear-gradient(to right, white, white);
 	border-image-slice: 1;
@@ -81,6 +88,10 @@ form * {
 .form-field:required,
 .form-field:invalid {
 	box-shadow: none;
+}
+
+textarea + label {
+	margin-bottom: 0;
 }
 
 /* .button {
