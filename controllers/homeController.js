@@ -30,21 +30,23 @@ exports.getMembershipForm = (req, res) => {
 	res.render('membershipForm', { title: 'Membership' });
 };
 
-exports.postMembershipForm = async (req, res) => {
-	const errors = validationResult(req);
-	if (!errors.isEmpty()) {
-		return res
-			.status(400)
-			.render('membershipForm', {
+exports.postMembershipForm = [
+	validateSecret,
+	async (req, res) => {
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			console.log('wrong');
+			return res.status(400).render('membershipForm', {
 				title: 'Membership',
 				errors: errors.array(),
 			});
-	}
+		}
 
-	const [user] = await db.getUserById(req.session.passport.user);
-	await db.changeMembership(user.username);
-	res.redirect('/home');
-};
+		const [user] = await db.getUserById(req.session.passport.user);
+		await db.changeMembership(user.username);
+		res.redirect('/home');
+	},
+];
 
 exports.getLogout = (req, res, next) => {
 	req.logout((err) => {

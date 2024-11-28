@@ -29,7 +29,7 @@ const validateSignup = [
 		.withMessage(`User name ${userNameErr}`)
 		.custom(async (username) => {
 			const user = await db.getUser(username);
-			if (user) {
+			if (user.length !== 0) {
 				throw new Error(`Username already taken.`);
 			}
 		}),
