@@ -11,7 +11,9 @@ validateSecret = [
 
 exports.getHomepage = async (req, res) => {
 	const messages = await db.getMessages();
-	res.render('homepage', { messages: messages });
+	const userId = req.session.passport.user;
+	const [user] = await db.getUserById(userId);
+	res.render('homepage', { membership: user.membership, messages: messages });
 };
 
 exports.getMessageForm = (req, res) => {
