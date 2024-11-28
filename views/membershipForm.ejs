@@ -11,28 +11,19 @@
 	</head>
 	<body>
 		<%- include('partials/errors') %>
-		<form action="/home/new-message" method="post">
+		<h1>Become a Black Hoodie</h1>
+		<form action="/home/membership" method="post">
 			<div class="form-group field">
 				<input
-					type="text"
-					name="title"
-					id="title"
+					type="password"
+					name="secret"
+					id="secret"
 					class="form-field"
 					required=""
 				/>
-				<label for="title" class="form-label">Title</label>
+				<label for="secret" class="form-label">Secret Passcode</label>
 			</div>
-			<div class="form-group field">
-				<textarea
-					type="text"
-					name="text"
-					id="text"
-					class="form-field"
-					required=""
-				></textarea>
-				<label for="text" class="form-label">Text</label>
-			</div>
-			<button type="submit" class="button">Create Message</button>
+			<button type="submit" class="button">Submit Passcode</button>
 		</form>
 		<a href="/home">
 			<button type="" class="button">Back</button>

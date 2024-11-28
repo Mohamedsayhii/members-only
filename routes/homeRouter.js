@@ -3,14 +3,18 @@ const {
 	getHomepage,
 	getLogout,
 	getMessageForm,
-	postMessagesForm,
+	postMessageForm,
+	getMembershipForm,
+	postMembershipForm,
 } = require('../controllers/homeController');
 
 const homeRouter = Router();
 
 homeRouter.get('/', getHomepage);
 homeRouter.get('/new-message', getMessageForm);
-homeRouter.post('/new-message', postMessagesForm);
+homeRouter.post('/new-message', postMessageForm);
+homeRouter.get('/membership', getMembershipForm);
+homeRouter.post('/membership', postMembershipForm);
 homeRouter.get('/logout', getLogout);
 
 module.exports = homeRouter;

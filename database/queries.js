@@ -49,10 +49,18 @@ const insertMessage = async (title, text, username) => {
 	);
 };
 
+const changeMembership = async (username) => {
+	await pool.query(
+		'UPDATE users SET membership = ($1) WHERE username = ($2)',
+		['member', username]
+	);
+};
+
 module.exports = {
 	getUser,
 	getUserById,
 	insertUser,
 	getMessages,
 	insertMessage,
+	changeMembership,
 };
