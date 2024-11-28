@@ -1,6 +1,17 @@
 <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="home-style.css" />
 <title>Homepage</title>
 <%- include('navbar') %>
-<h1>You are logged IN</h1>
-<a href="/home/logout">Log Out</a>
+<main>
+	<ul>
+		<% messages.forEach( (message) => { %>
+		<li>
+			<h3><%= message.username %></h3>
+			<h3><%= message.title %></h3>
+			<p><%= message.date %></p>
+			<p><%= message.text %></p>
+		</li>
+		<% }); %>
+	</ul>
+</main>
 <%- include('footer') %>

@@ -28,4 +28,31 @@ const insertUser = async (
 	);
 };
 
-module.exports = { getUser, getUserById, insertUser };
+const getMessages = async () => {
+	const { rows } = await pool.query(
+		'SELECT title, date, text, username FROM messages'
+	);
+	return rows;
+};
+
+const insertMessage = async (title, text, username) => {
+	const date = new Intl.DateTimeFormat('en-GB', {
+		weekday: 'long',
+		day: '2-digit',
+		month: 'long',
+		year: 'numeric',
+	}).format(new Date());
+
+	await pool.query(
+		'INSERT INTO messages (title, date, text, username) VALUES ($1, $2, $3, $4)',
+		[title, date, text, username]
+	);
+};
+
+module.exports = {
+	getUser,
+	getUserById,
+	insertUser,
+	getMessages,
+	insertMessage,
+};
