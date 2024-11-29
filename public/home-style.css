@@ -27,11 +27,6 @@ main ul li {
 	align-items: center;
 }
 
-.user-deletebutton button {
-	padding: 1rem;
-	width: 30%;
-}
-
 @media screen and (max-width: 750px) {
 	main {
 		height: 80vh;

@@ -60,6 +60,12 @@ exports.postMembershipForm = [
 	},
 ];
 
+exports.deleteMessage = async (req, res) => {
+	const { messageId } = req.params;
+	await db.deleteMessage(messageId);
+	res.redirect('/home');
+};
+
 exports.getLogout = (req, res, next) => {
 	req.logout((err) => {
 		if (err) {

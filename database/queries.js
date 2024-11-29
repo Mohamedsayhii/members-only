@@ -29,9 +29,7 @@ const insertUser = async (
 };
 
 const getMessages = async () => {
-	const { rows } = await pool.query(
-		'SELECT title, date, text, username FROM messages'
-	);
+	const { rows } = await pool.query('SELECT * FROM messages');
 	return rows;
 };
 
@@ -56,6 +54,10 @@ const changeMembership = async (username, membership) => {
 	);
 };
 
+const deleteMessage = async (messageId) => {
+	await pool.query('DELETE FROM messages WHERE id = ($1)', [messageId]);
+};
+
 module.exports = {
 	getUser,
 	getUserById,
@@ -63,4 +65,5 @@ module.exports = {
 	getMessages,
 	insertMessage,
 	changeMembership,
+	deleteMessage,
 };
