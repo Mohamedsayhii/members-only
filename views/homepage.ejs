@@ -28,9 +28,15 @@
 			</div>
 			<h3><%= message.title %></h3>
 			<p>
-				<% if(membership === 'guest') {%> Sine Die <% } else { %> <%=
-				message.date %><% } %>
+				<% if (membership === 'guest') { %> Sine Die <% } else { const
+				dateObj = new Date(message.date); const formattedDate =
+				`${dateObj.getDate()} ${dateObj.toLocaleString(undefined, {
+				month: 'long' })} ${dateObj.getFullYear()},
+				${dateObj.toLocaleString(undefined, { hour: 'numeric', minute:
+				'2-digit', hour12: true }).toUpperCase()}`; %> <%= formattedDate
+				%> <% } %>
 			</p>
+
 			<p><%= message.text %></p>
 		</li>
 		<% }); %>
