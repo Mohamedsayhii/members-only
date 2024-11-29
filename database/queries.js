@@ -49,10 +49,10 @@ const insertMessage = async (title, text, username) => {
 	);
 };
 
-const changeMembership = async (username) => {
+const changeMembership = async (username, membership) => {
 	await pool.query(
 		'UPDATE users SET membership = ($1) WHERE username = ($2)',
-		['member', username]
+		[membership, username]
 	);
 };
 

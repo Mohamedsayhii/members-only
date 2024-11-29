@@ -1,19 +1,24 @@
 <link rel="stylesheet" href="style.css" />
 <link rel="stylesheet" href="home-style.css" />
 <title>Homepage</title>
-<%- include('navbar') %>
+<%- include('navbar'), {membership: membership} %>
 <main>
 	<ul>
 		<% messages.forEach( (message) => { %>
 		<li>
-			<h3>
-				<% if(membership === 'member') {%> <%= message.username %> <% }
-				else { %> Black Hoodie Member <% } %>
-			</h3>
+			<div class="user-deletebutton">
+				<h3>
+					<% if(membership === 'guest') {%> Black Hoodie Member <% }
+					else { %> <%= message.username %><% } %>
+				</h3>
+				<% if (membership === 'admin') { %>
+				<button>delete</button>
+				<% } %>
+			</div>
 			<h3><%= message.title %></h3>
 			<p>
-				<% if(membership === 'member') {%> <%= message.date %> <% } else
-				{ %> Sine Die <% } %>
+				<% if(membership === 'guest') {%> Sine Die <% } else { %> <%=
+				message.date %><% } %>
 			</p>
 			<p><%= message.text %></p>
 		</li>

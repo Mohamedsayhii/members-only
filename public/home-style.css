@@ -21,8 +21,15 @@ main ul li {
 	border-radius: 1.5rem;
 }
 
-main ul li * {
-	padding-bottom: 1rem;
+.user-deletebutton {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.user-deletebutton button {
+	padding: 1rem;
+	width: 30%;
 }
 
 @media screen and (max-width: 750px) {

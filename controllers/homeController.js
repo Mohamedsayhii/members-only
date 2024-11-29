@@ -5,7 +5,9 @@ validateSecret = [
 	body('secret')
 		.notEmpty()
 		.trim()
-		.equals('Black Hoodie')
+		.custom((value) => {
+			return value === 'Black Hoodie' || value === 'BHG';
+		})
 		.withMessage(`Wrong Secret Passcode.`),
 ];
 
@@ -37,15 +39,23 @@ exports.postMembershipForm = [
 	async (req, res) => {
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
-			console.log('wrong');
 			return res.status(400).render('membershipForm', {
 				title: 'Membership',
 				errors: errors.array(),
 			});
 		}
 
+		const { secret } = req.body;
+
+		const membership =
+			secret === 'BHG'
+				? 'admin'
+				: secret === 'Black Hoodie'
+				? 'member'
+				: 'guest';
+
 		const [user] = await db.getUserById(req.session.passport.user);
-		await db.changeMembership(user.username);
+		await db.changeMembership(user.username, membership);
 		res.redirect('/home');
 	},
 ];
