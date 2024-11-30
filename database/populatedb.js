@@ -18,6 +18,15 @@ const sqlQuery = `
         username VARCHAR (255),
         CONSTRAINT FK_messages_users FOREIGN KEY(username) REFERENCES users(username)
     );
+
+    CREATE TABLE "sessions" (
+        "sid" varchar NOT NULL COLLATE "default",
+        "sess" json NOT NULL,
+        "expire" timestamp(6) NOT NULL
+    )
+    WITH (OIDS=FALSE);
+    ALTER TABLE "sessions" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
+    CREATE INDEX "IDX_session_expire" ON "sessions" ("expire");
 `;
 
 async function populatedb() {
